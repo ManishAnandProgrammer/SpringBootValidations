@@ -1,10 +1,17 @@
 package com.manish.domain;
 
+import com.manish.domain.embedded.Email;
 import com.manish.domain.embedded.Name;
+import com.manish.domain.embedded.PhoneNumber;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
-@Entity
+@Entity(name = "users")
+@Getter
+@Setter
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,19 +21,9 @@ public class User {
     @Embedded
     private Name name;
 
-    public Long getId() {
-        return id;
-    }
+    @Embedded
+    private PhoneNumber phoneNumber;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Name getName() {
-        return name;
-    }
-
-    public void setName(Name name) {
-        this.name = name;
-    }
+    @Embedded
+    private List<Email> emails;
 }
