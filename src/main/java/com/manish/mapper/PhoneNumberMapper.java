@@ -10,6 +10,6 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface PhoneNumberMapper {
-    PhoneNumber from(PhoneNumberInput phoneNumberInput);
-    PhoneNumberResponse from(PhoneNumber phoneNumber);
+    PhoneNumber fromPhoneNumberInputToPhoneNumber(PhoneNumberInput phoneNumberInput);
+    PhoneNumberResponse fromPhoneNumberToPhoneNumberResponse(PhoneNumber phoneNumber);
 }

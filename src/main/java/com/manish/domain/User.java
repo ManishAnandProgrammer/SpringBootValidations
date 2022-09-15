@@ -14,7 +14,7 @@ import java.util.List;
 @Setter
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
@@ -24,6 +24,6 @@ public class User {
     @Embedded
     private PhoneNumber phoneNumber;
 
-    @Embedded
+    @ElementCollection
     private List<Email> emails;
 }

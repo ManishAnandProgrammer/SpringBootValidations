@@ -7,6 +7,6 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface NameMapper {
-    Name from(NameInput nameInput);
-    NameResponse from(Name name);
+    Name fromNameInputToName(NameInput nameInput);
+    NameResponse fromNameToNameResponse(Name name);
 }

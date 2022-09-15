@@ -1,14 +1,12 @@
 package com.manish.dto.request;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
-@NoArgsConstructor
 @Getter
 @Setter
 public class UserUpsertRequest {
