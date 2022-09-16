@@ -10,11 +10,11 @@ import javax.validation.constraints.NotBlank;
 @Getter
 @Setter
 public class NameInput {
-    @NotBlank
+    @NotBlank(message = "{first.name.required}")
     private String first;
 
     private String middle;
 
-    @NotBlank
+    @NotBlank(message = "{last.name.required}")
     private String last;
 }
