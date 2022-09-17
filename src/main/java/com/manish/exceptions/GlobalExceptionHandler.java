@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindException;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -14,26 +15,23 @@ import org.springframework.web.context.request.WebRequest;
 
 import java.util.Date;
 
+import static org.springframework.http.HttpStatus.UNPROCESSABLE_ENTITY;
+
 @ControllerAdvice
 public class GlobalExceptionHandler {
 	private static final Logger LOGGER = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+	public static final String CHECK_ERROR_FIELD_MESSAGE = "Validation error. Check 'errors' field for details.";
 
 	@ExceptionHandler({MethodArgumentNotValidException.class, BindException.class})
 	protected ResponseEntity<?> handleMethodArgumentNotValid(BindException ex,
 															 WebRequest request) {
-		ErrorResponse errorResponse =
-				new ErrorResponse(new Date(), HttpStatus.UNPROCESSABLE_ENTITY.value(),
-						"Validation error. Check 'errors' field for details.",
-						request.getDescription(false));
+		ErrorResponse errorResponse = new ErrorResponse(
+				new Date(), UNPROCESSABLE_ENTITY.value(),
+				CHECK_ERROR_FIELD_MESSAGE, request.getDescription(false)
+		);
 
-
-		for (FieldError fieldError : ex.getBindingResult().getFieldErrors()) {
-			errorResponse.addValidationError(
-					fieldError.getField(),
-					fieldError.getDefaultMessage(),
-					fieldError.getRejectedValue()
-			);
-		}
+		BindingResult bindingResult = ex.getBindingResult();
+		bindingResult.getFieldErrors().forEach(errorResponse::addValidationError);
 
 		LOGGER.error("BindException :: ", ex);
 		return ResponseEntity.unprocessableEntity().body(errorResponse);
@@ -55,10 +53,10 @@ public class GlobalExceptionHandler {
 
 		ErrorResponse errorResponse =
 					new ErrorResponse(new Date(),
-						HttpStatus.UNPROCESSABLE_ENTITY.value(),
+						UNPROCESSABLE_ENTITY.value(),
 						exception.getMessage(),
 						request.getDescription(false)
 				);
-		return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(errorResponse);
+		return ResponseEntity.status(UNPROCESSABLE_ENTITY).body(errorResponse);
 	}
 }
