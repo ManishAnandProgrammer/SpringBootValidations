@@ -22,6 +22,7 @@ public class ErrorResponse {
     private final String details;
     private String stackTrace;
     private List<ValidationError> errors;
+
     private record ValidationError(String field, String message, Object rejectedValue) {}
 
     public void addValidationError(FieldError fieldError){

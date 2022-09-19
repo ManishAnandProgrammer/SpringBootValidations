@@ -26,4 +26,6 @@ public class User {
 
     @ElementCollection
     private List<Email> emails;
+
+    private String password;
 }

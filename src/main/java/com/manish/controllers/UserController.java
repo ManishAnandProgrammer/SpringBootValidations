@@ -1,26 +1,38 @@
 package com.manish.controllers;
 
+import com.manish.domains.User;
+import com.manish.dtos.requests.PasswordInput;
 import com.manish.dtos.requests.UserUpsertRequest;
 import com.manish.dtos.responses.UserResponse;
 import com.manish.services.commands.UserCommandService;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.manish.services.queries.UserQueryService;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 
 @RestController
 @RequestMapping("/api")
 public class UserController {
     private final UserCommandService userCommandService;
+    private final UserQueryService userQueryService;
 
-    public UserController(UserCommandService userCommandService) {
+    public UserController(UserCommandService userCommandService,
+                          UserQueryService userQueryService) {
         this.userCommandService = userCommandService;
+        this.userQueryService = userQueryService;
     }
 
     @PutMapping("/users")
     public UserResponse upsert(@Valid @RequestBody final UserUpsertRequest upsertRequest) {
         return userCommandService.saveOrUpdate(upsertRequest);
+    }
+
+    @PatchMapping("/users/{id}/password")
+    public UserResponse setPassword(@PathVariable("id") @NotBlank(message = "{required.id}") Long id,
+                                    @Valid @RequestBody final PasswordInput passwordInput) {
+        User user = userQueryService.findById(id);
+        user.setPassword(passwordInput.getPassword());
+        return userCommandService.saveOrUpdate(user);
     }
 }

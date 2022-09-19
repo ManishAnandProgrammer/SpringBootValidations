@@ -20,6 +20,10 @@ public class UserCommandService {
 
     public UserResponse saveOrUpdate(final UserUpsertRequest upsertRequest) {
         User user = userMapper.fromUpsertRequestToUser(upsertRequest);
+        return saveOrUpdate(user);
+    }
+
+    public UserResponse saveOrUpdate(final User user) {
         User savedUser = userRepository.save(user);
         return userMapper.fromUserToUserResponse(savedUser);
     }
