@@ -8,7 +8,7 @@ import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
-@FieldsValueMatch(field = "password", fieldMatch = "confirmPassword")
+@FieldsValueMatch(field = "password", fieldMatch = "confirmPassword", message = "{field.value.mismatch}")
 public class PasswordInput {
     @NotBlank(message = "{password.required}")
     private String password;

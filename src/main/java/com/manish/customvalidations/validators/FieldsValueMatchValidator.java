@@ -1,6 +1,7 @@
 package com.manish.customvalidations.validators;
 
 import com.manish.customvalidations.FieldsValueMatch;
+import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
 import org.springframework.beans.BeanWrapperImpl;
 
 import javax.validation.ConstraintValidator;
@@ -27,9 +28,14 @@ public class FieldsValueMatchValidator implements ConstraintValidator<FieldsValu
 
         if (Objects.equals(fieldValue, fieldMatchValue)) return true;
 
+        HibernateConstraintValidatorContext hibernateConstraintValidatorContext =
+                context.unwrap( HibernateConstraintValidatorContext.class );
+        hibernateConstraintValidatorContext.addMessageParameter("first", fieldValue);
+        hibernateConstraintValidatorContext.addMessageParameter("second", fieldMatchValue);
+
         context.disableDefaultConstraintViolation();
         context.buildConstraintViolationWithTemplate(message)
-                .addPropertyNode("password")
+                .addBeanNode()
                 .addConstraintViolation();
         return false;
     }
