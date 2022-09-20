@@ -7,10 +7,12 @@ import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 
+import static com.manish.constants.ValidationConstant.NAME_MAX_LENGTH;
+
 @NoArgsConstructor
 @Getter
 @Setter
-@NameMaxLength(maxLength = 5, message = "{name.max.length}")
+@NameMaxLength(maxLength = NAME_MAX_LENGTH, message = "{name.max.length}")
 public class NameInput {
     @NotBlank(message = "{first.name.required}")
     private String first;

@@ -1,7 +1,5 @@
 package com.manish.customvalidations;
 
-import com.manish.customvalidations.NameMaxLength;
-
 import java.lang.annotation.*;
 
 @Retention(RetentionPolicy.RUNTIME)
