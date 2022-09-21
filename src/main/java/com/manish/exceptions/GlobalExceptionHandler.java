@@ -7,14 +7,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 
 import java.util.Date;
-import java.util.List;
 
 import static org.springframework.http.HttpStatus.UNPROCESSABLE_ENTITY;
 
@@ -34,7 +32,6 @@ public class GlobalExceptionHandler {
 		BindingResult bindingResult = ex.getBindingResult();
 		bindingResult.getFieldErrors().forEach(errorResponse::addValidationError);
 		bindingResult.getGlobalErrors().forEach(errorResponse::addValidationError);
-
 
 		LOGGER.error("BindException :: ", ex);
 		return ResponseEntity.unprocessableEntity().body(errorResponse);
