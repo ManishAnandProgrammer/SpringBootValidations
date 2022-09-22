@@ -1,6 +1,6 @@
-package com.manish.customvalidations;
+package com.manish.customvalidations.beforeBinding;
 
-import com.manish.customvalidations.validators.FieldsValueMatchValidator;
+import com.manish.customvalidations.beforeBinding.validators.FieldsValueMatchValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

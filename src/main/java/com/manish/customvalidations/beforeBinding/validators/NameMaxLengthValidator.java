@@ -1,6 +1,6 @@
-package com.manish.customvalidations.validators;
+package com.manish.customvalidations.beforeBinding.validators;
 
-import com.manish.customvalidations.NameMaxLength;
+import com.manish.customvalidations.beforeBinding.NameMaxLength;
 import com.manish.dtos.requests.NameInput;
 
 import javax.validation.ConstraintValidator;

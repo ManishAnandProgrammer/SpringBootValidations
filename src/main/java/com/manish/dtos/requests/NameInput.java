@@ -1,6 +1,6 @@
 package com.manish.dtos.requests;
 
-import com.manish.customvalidations.NameMaxLength;
+import com.manish.customvalidations.beforeBinding.NameMaxLength;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

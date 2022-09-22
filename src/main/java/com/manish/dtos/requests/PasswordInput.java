@@ -1,6 +1,6 @@
 package com.manish.dtos.requests;
 
-import com.manish.customvalidations.FieldsValueMatch;
+import com.manish.customvalidations.beforeBinding.FieldsValueMatch;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,6 +1,6 @@
-package com.manish.customvalidations;
+package com.manish.customvalidations.beforeBinding;
 
-import com.manish.customvalidations.validators.NameMaxLengthValidator;
+import com.manish.customvalidations.beforeBinding.validators.NameMaxLengthValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

@@ -1,6 +1,6 @@
-package com.manish.customvalidations.validators;
+package com.manish.customvalidations.beforeBinding.validators;
 
-import com.manish.customvalidations.FieldsValueMatch;
+import com.manish.customvalidations.beforeBinding.FieldsValueMatch;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
 import org.springframework.beans.BeanWrapperImpl;
 
