@@ -8,4 +8,5 @@ import lombok.Setter;
 public class CompanyInput {
     private String name;
     private String address;
+    private String customerCareNumber;
 }
