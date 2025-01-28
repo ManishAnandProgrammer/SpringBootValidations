@@ -3,16 +3,17 @@ package com.manish.domains;
 import com.manish.domains.embedded.Email;
 import com.manish.domains.embedded.Name;
 import com.manish.domains.embedded.PhoneNumber;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
 import java.util.List;
 
 @Entity(name = "users")
 @Getter
 @Setter
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)

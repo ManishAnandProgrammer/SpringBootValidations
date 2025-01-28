@@ -1,11 +1,11 @@
 package com.manish.dtos.requests;
 
 import com.manish.customvalidations.beforeBinding.NameMaxLength;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.NotBlank;
 
 import static com.manish.constants.ValidationConstant.NAME_MAX_LENGTH;
 

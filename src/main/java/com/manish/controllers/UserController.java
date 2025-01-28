@@ -6,10 +6,10 @@ import com.manish.dtos.requests.UserUpsertRequest;
 import com.manish.dtos.responses.UserResponse;
 import com.manish.services.commands.UserCommandService;
 import com.manish.services.queries.UserQueryService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
 
 @RestController
 @RequestMapping("/api")

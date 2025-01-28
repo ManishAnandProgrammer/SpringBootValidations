@@ -1,9 +1,9 @@
 package com.manish.customvalidations.beforeBinding;
 
 import com.manish.customvalidations.beforeBinding.validators.FieldsValueMatchValidator;
+import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
 
-import javax.validation.Constraint;
-import javax.validation.Payload;
 import java.lang.annotation.*;
 
 @Documented

@@ -3,8 +3,9 @@ package com.manish.customvalidations.beforeBinding.validators;
 import com.manish.customvalidations.beforeBinding.NameMaxLength;
 import com.manish.dtos.requests.NameInput;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
+
 import java.util.Objects;
 
 public class NameMaxLengthValidator implements ConstraintValidator<NameMaxLength, NameInput> {
