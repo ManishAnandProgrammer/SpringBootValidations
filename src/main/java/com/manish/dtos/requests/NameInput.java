@@ -1,6 +1,6 @@
 package com.manish.dtos.requests;
 
-import com.manish.customvalidations.beforeBinding.NameMaxLength;
+import com.manish.customvalidations.beforebinding.NameMaxLength;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

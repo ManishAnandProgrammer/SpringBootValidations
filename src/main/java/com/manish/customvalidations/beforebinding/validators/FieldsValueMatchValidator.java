@@ -1,6 +1,6 @@
-package com.manish.customvalidations.beforeBinding.validators;
+package com.manish.customvalidations.beforebinding.validators;
 
-import com.manish.customvalidations.beforeBinding.FieldsValueMatch;
+import com.manish.customvalidations.beforebinding.FieldsValueMatch;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;

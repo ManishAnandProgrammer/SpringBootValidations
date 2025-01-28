@@ -4,12 +4,13 @@ import com.manish.dtos.requests.CompanyInput;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-@Component("CompanyValidator")
+@Component("companyValidator")
 public class CompanyValidator implements Validator {
 
     private final MessageSource messageSource;
@@ -19,12 +20,12 @@ public class CompanyValidator implements Validator {
     }
 
     @Override
-    public boolean supports(Class<?> clazz) {
+    public boolean supports(@NonNull Class<?> clazz) {
         return CompanyInput.class.equals(clazz);
     }
 
     @Override
-    public void validate(Object target, Errors errors) {
+    public void validate(@NonNull Object target, @NonNull Errors errors) {
         CompanyInput companyInput = (CompanyInput) target;
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "address",
             "company.address.required");

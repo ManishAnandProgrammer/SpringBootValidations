@@ -1,4 +1,4 @@
-package com.manish.customvalidations.beforeBinding;
+package com.manish.customvalidations.beforebinding;
 
 import java.lang.annotation.*;
 
