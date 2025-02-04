@@ -5,7 +5,9 @@ import lombok.Setter;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.SetUtils;
 
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Setter
 public class FileIdsPayload {
@@ -14,15 +16,21 @@ public class FileIdsPayload {
     private Set<Long> deletedIds;
 
     public Set<Long> getOldIds() {
-        return SetUtils.emptyIfNull(oldIds);
+        return SetUtils.emptyIfNull(oldIds).stream()
+                .filter(Objects::nonNull)
+                .collect(Collectors.toSet());
     }
 
     public Set<Long> getNewIds() {
-        return SetUtils.emptyIfNull(newIds);
+        return SetUtils.emptyIfNull(newIds).stream()
+                .filter(Objects::nonNull)
+                .collect(Collectors.toSet());
     }
 
     public Set<Long> getDeletedIds() {
-        return SetUtils.emptyIfNull(deletedIds);
+        return SetUtils.emptyIfNull(deletedIds).stream()
+                .filter(Objects::nonNull)
+                .collect(Collectors.toSet());
     }
 
     @JsonIgnore
