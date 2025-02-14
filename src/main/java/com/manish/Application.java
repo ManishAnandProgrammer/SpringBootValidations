@@ -25,8 +25,8 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 
-	@EventListener(ApplicationStartedEvent.class)
-	void init() {
+//	@EventListener(ApplicationStartedEvent.class)
+	void testingThatValidationWorkOnListOrNot() {
 		log.info("Application started");
 		log.info("Testing validation for Message DTO");
 
